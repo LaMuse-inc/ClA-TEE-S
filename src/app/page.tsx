@@ -1,0 +1,519 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, Menu, X, Phone, Mail, ArrowRight } from "lucide-react";
+import { WavePatternTop, WavePatternBottom } from "@/components/WavePattern";
+import { ProductTabs } from "@/components/ProductTabs";
+import { PriceCalculator } from "@/components/PriceCalculator";
+import { DesignGallery } from "@/components/DesignGallery";
+
+export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "https://ext.same-assets.com/1649376393/3469806900.png",
+      title: "LINEで完結！カンタン注文",
+      subtitle: "面倒な手続き不要、チャットで全て完了",
+    },
+    {
+      image: "https://ext.same-assets.com/1649376393/3657139855.png",
+      title: "学生限定！激安価格でご提供",
+      subtitle: "学割適用で最大20%OFF",
+    },
+    {
+      image: "https://ext.same-assets.com/1649376393/897169503.png",
+      title: "最短翌日お届け可能",
+      subtitle: "急ぎの注文も安心サポート",
+    },
+  ];
+
+  const products = [
+    { name: "ドライTシャツ", price: "¥400〜", image: "https://ext.same-assets.com/1649376393/3361116398.png", sizes: "XS-5XL" },
+    { name: "スタンダードTシャツ", price: "¥520〜", image: "https://ext.same-assets.com/1649376393/2847859190.png", sizes: "100-5XL", kids: true },
+    { name: "ラグランTシャツ", price: "¥700〜", image: "https://ext.same-assets.com/1649376393/2117706410.png", sizes: "S-XL" },
+  ];
+
+  const printMethods = [
+    {
+      title: "シルクスクリーン",
+      description: "大量生産に最適！",
+      price: "1枚あたり¥400〜",
+      icon: "🎨",
+      color: "bg-sparkle-pink",
+    },
+    {
+      title: "DTFプリント",
+      description: "フルカラー対応",
+      price: "1枚から可能",
+      icon: "🖨️",
+      color: "bg-sparkle-turquoise",
+    },
+    {
+      title: "刺繍",
+      description: "高級感のある仕上がり",
+      price: "お見積もり",
+      icon: "🪡",
+      color: "bg-sparkle-yellow",
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white shadow-md">
+        {/* Top Bar */}
+        <div className="bg-sparkle-pink text-white py-2">
+          <div className="container mx-auto px-4 flex justify-between items-center text-sm">
+            <div className="flex items-center gap-4">
+              <span className="font-bold">🎉 LINEで簡単注文</span>
+              <span>学生の味方！オリジナルTシャツ専門店</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="/guide" className="hover:underline">ご利用ガイド</Link>
+              <Link href="/about" className="hover:underline">私たちについて</Link>
+              <Link href="/faq" className="hover:underline">よくある質問</Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Navigation */}
+        <nav className="bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between py-4">
+              {/* Logo */}
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/logo.png"
+                  alt="SPARKLE"
+                  width={150}
+                  height={60}
+                  className="h-12 w-auto"
+                />
+              </Link>
+
+              {/* Desktop Navigation */}
+              <div className="hidden lg:flex items-center gap-8">
+                <Link href="/guide" className="text-gray-700 hover:text-sparkle-pink transition">ご利用ガイド</Link>
+                <Link href="/products" className="text-gray-700 hover:text-sparkle-pink transition">商品カタログ</Link>
+                <Link href="/design" className="text-gray-700 hover:text-sparkle-pink transition">デザイン作成</Link>
+                <Link href="/faq" className="text-gray-700 hover:text-sparkle-pink transition">よくある質問</Link>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex items-center gap-4">
+                <button className="bg-sparkle-yellow text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-sparkle-yellow-light transition">
+                  無料見積もり
+                </button>
+                <button className="bg-sparkle-turquoise text-white px-6 py-3 rounded-full font-bold hover:bg-sparkle-turquoise-dark transition">
+                  お問い合わせ
+                </button>
+              </div>
+
+              {/* Mobile Menu Toggle */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="lg:hidden p-2"
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden bg-white border-t">
+            <div className="container mx-auto px-4 py-4">
+              <Link href="#" className="block py-2 text-gray-700">ご注文ガイド</Link>
+              <Link href="#" className="block py-2 text-gray-700">商品を選ぶ</Link>
+              <Link href="#" className="block py-2 text-gray-700">加工方法を選ぶ</Link>
+              <Link href="#" className="block py-2 text-gray-700">デザインについて</Link>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Hero Carousel */}
+      <section className="relative h-[500px] lg:h-[600px] overflow-hidden">
+        <div className="relative h-full">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent">
+                <div className="container mx-auto px-4 h-full flex items-center">
+                  <div className="text-white max-w-2xl">
+                    <h1 className="text-4xl lg:text-6xl font-bold mb-4 animate-slideIn">
+                      {slide.title}
+                    </h1>
+                    <p className="text-xl lg:text-2xl mb-8 animate-slideIn animation-delay-200">
+                      {slide.subtitle}
+                    </p>
+                    <button className="bg-sparkle-yellow text-gray-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-sparkle-yellow-light transition animate-slideIn animation-delay-400">
+                      今すぐ見積もり
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Carousel Controls */}
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white transition"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white transition"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition ${
+                index === currentSlide ? "bg-white" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Special Offer Banner */}
+      <section className="relative bg-gradient-to-r from-sparkle-pink to-sparkle-pink-light py-8">
+        <WavePatternBottom color="#ffffff" opacity={0.2} />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center text-white">
+            <h2 className="text-3xl font-bold mb-4">オリジナルプリントの専門店</h2>
+            <div className="flex flex-wrap justify-center gap-8 mb-4">
+              <div className="bg-white/20 backdrop-blur rounded-full px-6 py-3">
+                <span className="font-bold text-lg">デザイン＆見積無料</span>
+              </div>
+              <div className="bg-white/20 backdrop-blur rounded-full px-6 py-3">
+                <span className="font-bold text-lg">納期を必ず守ります</span>
+              </div>
+              <div className="bg-white/20 backdrop-blur rounded-full px-6 py-3">
+                <span className="font-bold text-lg">お支払いは後払い</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LINE CTA */}
+      <section className="bg-gradient-to-r from-green-500 to-green-600 py-12">
+        <div className="container mx-auto px-4">
+          <div className="bg-white rounded-3xl p-8 max-w-4xl mx-auto shadow-xl">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-4">
+                  全国高等学校の<span className="text-sparkle-pink">約半数</span>2校のうち1校が注文！
+                </h3>
+                <p className="text-xl font-bold text-green-600 mb-6">
+                  どんな事でもOK！スタッフに聞いてみよう
+                </p>
+                <Link
+                  href="https://line.me/R/ti/p/@895gydcc"
+                  className="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.84 5.42-1.19 7.18-.15.76-.45 1.02-.75 1.04-.64.04-1.13-.42-1.75-.83-.97-.64-1.52-1.03-2.47-1.66-1.09-.71-.38-1.1.24-1.74.16-.16 2.92-2.68 2.98-2.91.01-.03.01-.14-.07-.2-.08-.06-.2-.04-.28-.02-.12.02-2.03 1.29-5.73 3.78-.54.37-1.03.56-1.47.55-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.46-.51 1.28-.78 5.01-2.18 8.35-3.63 10.02-4.35 1.43-.61 1.72-.72 1.91-.72.04 0 .14 0 .2.07.05.05.06.14.06.18-.01.06-.01.24-.02.38z"/>
+                  </svg>
+                  LINEで質問
+                </Link>
+              </div>
+              <div className="relative">
+                <div className="w-48 h-48 bg-white rounded-xl shadow-lg p-4">
+                  <Image
+                    src="/line-qr.jpeg"
+                    alt="LINE QRコード"
+                    width={180}
+                    height={180}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-gray-500 mt-4 text-center">
+              ※LINEは相談窓口となりますので注文は出来かねます。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Order Flow */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            今日注文して、<span className="text-sparkle-pink">最短明日お届け！</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <div className="bg-sparkle-turquoise text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                01
+              </div>
+              <h3 className="text-xl font-bold mb-2">商品を選ぶ</h3>
+              <p className="text-gray-600">豊富なラインナップから選択</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-sparkle-turquoise text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                02
+              </div>
+              <h3 className="text-xl font-bold mb-2">デザインを決める</h3>
+              <p className="text-gray-600">無料テンプレートも豊富</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-sparkle-turquoise text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                03
+              </div>
+              <h3 className="text-xl font-bold mb-2">注文・お届け</h3>
+              <p className="text-gray-600">最短翌日お届け可能</p>
+            </div>
+          </div>
+          <div className="text-center">
+            <Link
+              href="#"
+              className="inline-flex items-center gap-2 text-sparkle-pink font-bold text-lg hover:underline"
+            >
+              詳しく見る
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section with Tabs */}
+      <ProductTabs />
+
+      {/* Price Calculator */}
+      <PriceCalculator />
+
+      {/* Design Gallery */}
+      <DesignGallery />
+
+      {/* Pick Up Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            PICK UP
+          </h2>
+          <p className="text-center text-gray-600 mb-12">
+            もっと楽しくする情報もりだくさん！
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "ワクホイマト フードアリント", description: "文字の置成で加工を確かでい方必要！アイロンを使って貼り付けよう！", price: "1000円より！！", color: "bg-gradient-to-br from-purple-400 to-pink-400" },
+              { title: "ユニフォーム クラスTシャツ", description: "春ベージはコチラ！最安100円より！！", price: "400円〜", color: "bg-gradient-to-br from-yellow-400 to-orange-400" },
+              { title: "フルカラーフィルムオプション", description: "色数制限！１枚1枚文字の異なる可能！！", price: "お見積もり", color: "bg-gradient-to-br from-blue-400 to-cyan-400" },
+            ].map((item, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition group">
+                <div className={`h-48 ${item.color} p-6 flex items-center justify-center`}>
+                  <div className="text-white text-center">
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <p className="text-2xl font-bold text-sparkle-pink mb-4">{item.price}</p>
+                  <button className="w-full bg-sparkle-pink text-white py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition">
+                    詳細はこちら
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Let's Get Started Section */}
+      <section className="relative py-16 bg-sparkle-turquoise-light">
+        <WavePatternTop color="#FF5A9D" opacity={0.1} />
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Let's get Started!
+          </h2>
+          <p className="text-center text-gray-700 mb-12">
+            はじめての方へ
+          </p>
+
+          <div className="text-center mb-8">
+            <p className="text-lg mb-4">ご安心ください！</p>
+            <p className="text-lg mb-8">
+              スパークルなら「安心」「楽しい」クラT作りをお約束します！
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-6 text-center">
+              <div className="text-5xl mb-4">👕</div>
+              <h3 className="text-xl font-bold mb-2">商品を決めよう！</h3>
+              <p className="text-gray-600">大人気のドライTシャツから ユニフォーム風商品まで スウェットパーカーなど豊富なラインナップ！</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 text-center">
+              <div className="text-5xl mb-4">🎨</div>
+              <h3 className="text-xl font-bold mb-2">デザインを決めよう！</h3>
+              <p className="text-gray-600">創刊号のデザインテンプレート 800種類以上！ もちろんオリジナルデザインも大歓迎</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 text-center">
+              <div className="text-5xl mb-4">🎯</div>
+              <h3 className="text-xl font-bold mb-2">加工方法を決めよう！</h3>
+              <p className="text-gray-600">シルクプリント・刺繍 写真やフルカラーのイラストまで 様々なプリント一人ひとり異なるチームナンバー</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Print Methods */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            ご注文方法のご案内
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {printMethods.map((method, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">
+                <div className={`${method.color} p-8 text-center text-white`}>
+                  <div className="text-6xl mb-4">{method.icon}</div>
+                  <h3 className="text-2xl font-bold">{method.title}</h3>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{method.description}</p>
+                  <p className="text-2xl font-bold text-gray-800">{method.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="relative py-16 bg-sparkle-turquoise-light">
+        <WavePatternBottom color="#FF5A9D" opacity={0.1} />
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            制作事例
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            実際に作成された素敵な作品たち。制作のヒントも見つけよう！
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div key={i} className="relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-sparkle-pink to-sparkle-turquoise opacity-75"></div>
+                <div className="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">
+                  {i}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <button className="bg-sparkle-pink text-white px-8 py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition">
+              一覧を見る
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4">ご注文について</h3>
+              <ul className="space-y-2">
+                <Link href="#" className="block hover:text-sparkle-pink transition">注文用紙</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">安払い方法</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">配送事項</Link>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">プリントについて</h3>
+              <ul className="space-y-2">
+                <Link href="#" className="block hover:text-sparkle-pink transition">商品</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">デザインサンプル</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">全般の詳細</Link>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">加工方法について</h3>
+              <ul className="space-y-2">
+                <Link href="#" className="block hover:text-sparkle-pink transition">お見積もり診断</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">加工方法</Link>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">スパークルについて</h3>
+              <ul className="space-y-2">
+                <Link href="#" className="block hover:text-sparkle-pink transition">会社概要</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">ご挨拶</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">採用情報</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">プライバシーポリシー</Link>
+                <Link href="#" className="block hover:text-sparkle-pink transition">ブログ / コラム</Link>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-700 pt-8">
+            <div className="text-center">
+              <div className="text-xs text-gray-400 space-y-2">
+                <div className="flex justify-center items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3 h-3" />
+                    <span>070-9362-9828（24時間受付）</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-3 h-3" />
+                    <span>info@s-parkle.co.jp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8 pt-8 border-t border-gray-700">
+            <p className="text-sm">
+              © ORIGINAL PRINTING S PARKLE
+            </p>
+            <p className="text-xs mt-2">
+              思い出作りを全力でサポート致します。
+            </p>
+          </div>
+        </div>
+      </footer>
+
+
+    </div>
+  );
+}
