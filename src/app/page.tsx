@@ -16,13 +16,13 @@ export default function Home() {
   const slides = [
     {
       image: "https://ext.same-assets.com/1649376393/3469806900.png",
-      title: "LINEで完結！カンタン注文",
-      subtitle: "面倒な手続き不要、チャットで全て完了",
+      title: "クラスTシャツ・ポロシャツ・ユニフォームもお任せ！",
+      subtitle: "サイズが合わなくても大丈夫、安心の「サイズ交換保証」付き。【先生分無料！】",
     },
     {
       image: "https://ext.same-assets.com/1649376393/3657139855.png",
-      title: "学生限定！激安価格でご提供",
-      subtitle: "学割適用で最大20%OFF",
+      title: "LINEで完結！カンタン注文",
+      subtitle: "面倒な手続き不要、チャットで全て完了",
     },
     {
       image: "https://ext.same-assets.com/1649376393/897169503.png",
@@ -319,37 +319,48 @@ export default function Home() {
       {/* Design Gallery */}
       <DesignGallery />
 
-      {/* Pick Up Section */}
+      {/* Uniform Templates Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">
-            PICK UP
+            デザインに悩んだらコレ！選べるユニフォームテンプレートは全16種！
           </h2>
           <p className="text-center text-gray-600 mb-12">
-            もっと楽しくする情報もりだくさん！
+            「どんなデザインにしようか決まらない…」そんな時もご安心ください！<br />
+            プロがデザインした高品質なユニフォーム風テンプレートを16種類ご用意しました。
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "ワクホイマト フードアリント", description: "文字の置成で加工を確かでい方必要！アイロンを使って貼り付けよう！", price: "1000円より！！", color: "bg-gradient-to-br from-purple-400 to-pink-400" },
-              { title: "ユニフォーム クラスTシャツ", description: "春ベージはコチラ！最安100円より！！", price: "400円〜", color: "bg-gradient-to-br from-yellow-400 to-orange-400" },
-              { title: "フルカラーフィルムオプション", description: "色数制限！１枚1枚文字の異なる可能！！", price: "お見積もり", color: "bg-gradient-to-br from-blue-400 to-cyan-400" },
-            ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition group">
-                <div className={`h-48 ${item.color} p-6 flex items-center justify-center`}>
+          <div className="bg-sparkle-turquoise/10 rounded-2xl p-8 max-w-4xl mx-auto mb-12">
+            <p className="text-center text-lg font-bold mb-4">
+              お好きなテンプレートを選ぶだけで、
+              <span className="text-sparkle-turquoise text-2xl">【前面プリント代込み1,300円】</span>
+              で本格的なオリジナルTシャツが簡単に作成できます。
+            </p>
+            <p className="text-center text-gray-600">
+              クラス名や個人名、背番号などを追加して、世界に一つだけのユニフォームを完成させましょう！
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {[...Array(16)].map((_, i) => (
+              <div key={i} className="bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:scale-105 cursor-pointer">
+                <div className="aspect-square bg-gradient-to-br from-sparkle-turquoise to-sparkle-turquoise-light rounded-t-xl flex items-center justify-center">
                   <div className="text-white text-center">
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <div className="text-4xl font-bold mb-2">#{i + 1}</div>
+                    <div className="text-sm">テンプレート</div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4">{item.description}</p>
-                  <p className="text-2xl font-bold text-sparkle-pink mb-4">{item.price}</p>
-                  <button className="w-full bg-sparkle-pink text-white py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition">
-                    詳細はこちら
-                  </button>
+                <div className="p-3 text-center">
+                  <p className="text-sm font-bold">デザイン {i + 1}</p>
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <button className="bg-sparkle-turquoise text-white px-8 py-3 rounded-full font-bold hover:bg-sparkle-turquoise-dark transition">
+              全テンプレートを見る
+            </button>
           </div>
         </div>
       </section>
