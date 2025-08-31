@@ -16,18 +16,18 @@ export default function Home() {
   const slides = [
     {
       image: "https://ext.same-assets.com/1649376393/3469806900.png",
-      title: "クラスTシャツ・ポロシャツ・ユニフォームもお任せ！",
-      subtitle: "サイズが合わなくても大丈夫、安心の「サイズ交換保証」付き。【先生分無料！】",
+      title: "クラスTシャツ\nポロシャツ\nユニフォーム\nもお任せ！",
+      subtitle: "サイズが合わなくても大丈夫\n安心の「サイズ交換保証」付き\n【先生分無料！】",
     },
     {
       image: "https://ext.same-assets.com/1649376393/3657139855.png",
-      title: "LINEで完結！カンタン注文",
-      subtitle: "面倒な手続き不要、チャットで全て完了",
+      title: "LINEで完結！\nカンタン注文",
+      subtitle: "面倒な手続き不要\nチャットで全て完了",
     },
     {
       image: "https://ext.same-assets.com/1649376393/897169503.png",
-      title: "最短翌日お届け可能",
-      subtitle: "急ぎの注文も安心サポート",
+      title: "最短翌日\nお届け可能",
+      subtitle: "急ぎの注文も\n安心サポート",
     },
   ];
 
@@ -220,11 +220,11 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
                 <div className="px-4 h-full flex items-center justify-center">
-                  <div className="text-white text-center max-w-md">
-                    <h1 className="text-2xl sm:text-3xl font-bold mb-4 animate-slideIn leading-tight">
+                  <div className="text-white text-center max-w-sm">
+                    <h1 className="text-2xl sm:text-3xl font-bold mb-6 animate-slideIn leading-tight whitespace-pre-line">
                       {slide.title}
                     </h1>
-                    <p className="text-base sm:text-lg mb-8 animate-slideIn animation-delay-200 leading-relaxed">
+                    <p className="text-sm sm:text-base mb-8 animate-slideIn animation-delay-200 leading-relaxed whitespace-pre-line">
                       {slide.subtitle}
                     </p>
                     <div className="space-y-3">
@@ -278,8 +278,8 @@ export default function Home() {
         <WavePatternBottom color="#ffffff" opacity={0.2} />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">オリジナルプリントの専門店</h2>
-            <div className="flex flex-wrap justify-center gap-8 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 leading-tight">オリジナルプリントの専門店</h2>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-8 mb-4">
               <div className="bg-white/20 backdrop-blur rounded-full px-6 py-3">
                 <span className="font-bold text-lg">デザイン＆見積無料</span>
               </div>
@@ -300,8 +300,9 @@ export default function Home() {
           <div className="bg-white rounded-3xl p-8 max-w-4xl mx-auto shadow-xl">
             <div className="flex flex-col lg:flex-row items-center gap-8">
               <div className="flex-1">
-                <h3 className="text-2xl font-bold mb-4">
-                  <span className="text-sparkle-pink">サイズ交換保証</span>で安心！ぴったりのクラスTシャツをお届け
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 leading-tight">
+                  <span className="text-sparkle-pink">サイズ交換保証</span>で安心！<br className="sm:hidden" />
+                  ぴったりのクラスTシャツをお届け
                 </h3>
                 <p className="text-xl font-bold text-green-600 mb-6">
                   どんな事でもOK！スタッフに聞いてみよう
@@ -338,8 +339,9 @@ export default function Home() {
       {/* Order Flow */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            今日注文して、<span className="text-sparkle-pink">最短明日お届け！</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12 leading-tight">
+            今日注文して、<br className="sm:hidden" />
+            <span className="text-sparkle-pink">最短明日お届け！</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
@@ -388,22 +390,26 @@ export default function Home() {
       {/* Uniform Templates Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">
-            デザインに悩んだらコレ！選べるユニフォームテンプレートは全16種！
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center mb-6 leading-tight px-4">
+            デザインに悩んだらコレ！<br />
+            選べるユニフォームテンプレートは<br className="sm:hidden" />全16種！
           </h2>
-          <p className="text-center text-gray-600 mb-12">
-            「どんなデザインにしようか決まらない…」そんな時もご安心ください！<br />
-            プロがデザインした高品質なユニフォーム風テンプレートを16種類ご用意しました。
+          <p className="text-center text-gray-600 mb-12 px-4 text-sm sm:text-base leading-relaxed">
+            「どんなデザインにしようか決まらない…」<br />
+            そんな時もご安心ください！<br />
+            プロがデザインした高品質な<br className="sm:hidden" />ユニフォーム風テンプレートを<br />
+            16種類ご用意しました。
           </p>
 
-          <div className="bg-sparkle-turquoise/10 rounded-2xl p-8 max-w-4xl mx-auto mb-12">
-            <p className="text-center text-lg font-bold mb-4">
-              お好きなテンプレートを選ぶだけで、
-              <span className="text-sparkle-turquoise text-2xl">【前面プリント代込み1,300円】</span>
-              で本格的なオリジナルTシャツが簡単に作成できます。
+          <div className="bg-sparkle-turquoise/10 rounded-2xl p-6 mx-4 mb-12">
+            <p className="text-center font-bold mb-4 text-sm sm:text-base leading-relaxed">
+              お好きなテンプレートを選ぶだけで、<br />
+              <span className="text-sparkle-turquoise text-xl sm:text-2xl">【前面プリント代込み1,300円】</span><br />
+              で本格的なオリジナルTシャツが<br className="sm:hidden" />簡単に作成できます。
             </p>
-            <p className="text-center text-gray-600">
-              クラス名や個人名、背番号などを追加して、世界に一つだけのユニフォームを完成させましょう！
+            <p className="text-center text-gray-600 text-sm sm:text-base leading-relaxed">
+              クラス名や個人名、背番号などを追加して、<br />
+              世界に一つだけのユニフォームを<br className="sm:hidden" />完成させましょう！
             </p>
           </div>
 
@@ -435,17 +441,18 @@ export default function Home() {
       <section className="relative py-16 bg-sparkle-turquoise-light">
         <WavePatternTop color="#FF5A9D" opacity={0.1} />
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-3xl font-bold text-center mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">
             Let's get Started!
           </h2>
-          <p className="text-center text-gray-700 mb-12">
+          <p className="text-center text-gray-700 mb-8 text-base sm:text-lg">
             はじめての方へ
           </p>
 
           <div className="text-center mb-8">
-            <p className="text-lg mb-4">ご安心ください！</p>
-            <p className="text-lg mb-8">
-              スパークルなら「安心」「楽しい」クラT作りをお約束します！
+            <p className="text-base sm:text-lg mb-4">ご安心ください！</p>
+            <p className="text-sm sm:text-base mb-8 leading-relaxed px-4">
+              スパークルなら「安心」「楽しい」<br className="sm:hidden" />
+              クラT作りをお約束します！
             </p>
           </div>
 
@@ -472,7 +479,7 @@ export default function Home() {
       {/* Print Methods */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">
             ご注文方法のご案内
           </h2>
 
@@ -497,11 +504,12 @@ export default function Home() {
       <section className="relative py-16 bg-sparkle-turquoise-light">
         <WavePatternBottom color="#FF5A9D" opacity={0.1} />
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
             制作事例
           </h2>
-          <p className="text-center text-gray-600 mb-8">
-            実際に作成された素敵な作品たち。制作のヒントも見つけよう！
+          <p className="text-center text-gray-600 mb-8 text-sm sm:text-base leading-relaxed px-4">
+            実際に作成された素敵な作品たち。<br className="sm:hidden" />
+            制作のヒントも見つけよう！
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
