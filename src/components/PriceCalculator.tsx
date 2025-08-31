@@ -45,7 +45,7 @@ export const PriceCalculator: React.FC = () => {
 
   return (
     <section className="py-16 bg-gradient-to-br from-sparkle-pink/10 to-sparkle-turquoise/10">
-      <div className="container mx-auto px-4">
+      <div className="px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">
             圧倒的コスパ！選べる2つの料金プラン

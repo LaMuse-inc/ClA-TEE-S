@@ -11,6 +11,7 @@ interface Product {
   sizes?: string;
   isNew?: boolean;
   isSale?: boolean;
+  isTemplate?: boolean;
   colors?: number;
 }
 
@@ -21,27 +22,10 @@ const productCategories: Record<string, { label: string; products: Product[] }> 
       {
         id: "1",
         name: "ドライTシャツ",
-        price: "¥400〜",
+        price: "¥980〜",
         image: "https://ext.same-assets.com/1649376393/3361116398.png",
         sizes: "XS-5XL",
         colors: 20,
-      },
-      {
-        id: "2",
-        name: "スタンダードTシャツ",
-        price: "¥520〜",
-        image: "https://ext.same-assets.com/1649376393/2847859190.png",
-        sizes: "100-5XL",
-        colors: 52,
-        isNew: true,
-      },
-      {
-        id: "3",
-        name: "ラグランTシャツ",
-        price: "¥700〜",
-        image: "https://ext.same-assets.com/1649376393/2117706410.png",
-        sizes: "S-XL",
-        colors: 7,
       },
     ],
   },
@@ -49,78 +33,135 @@ const productCategories: Record<string, { label: string; products: Product[] }> 
     label: "ポロシャツ",
     products: [
       {
-        id: "4",
-        name: "ドライポロシャツ",
-        price: "¥800〜",
+        id: "2",
+        name: "ポロシャツ",
+        price: "¥1,180〜",
         image: "https://ext.same-assets.com/1649376393/433771961.png",
-        sizes: "S-5XL",
+        sizes: "XS-5XL",
         colors: 15,
-      },
-      {
-        id: "5",
-        name: "ポケット付きポロ",
-        price: "¥950〜",
-        image: "https://ext.same-assets.com/1649376393/2105023763.png",
-        sizes: "S-XL",
-        colors: 10,
       },
     ],
   },
-  parker: {
-    label: "パーカー",
+  soccer: {
+    label: "⚽ サッカーユニ",
     products: [
       {
-        id: "6",
-        name: "プルオーバーパーカー",
-        price: "¥1,500〜",
-        image: "https://ext.same-assets.com/1649376393/3775348145.png",
+        id: "3",
+        name: "サッカーユニフォーム",
+        price: "¥1,300〜",
+        image: "https://ext.same-assets.com/1649376393/2094887123.png",
         sizes: "S-XL",
         colors: 12,
+        isNew: true,
+      },
+    ],
+  },
+  basketball: {
+    label: "🏀 バスケユニ",
+    products: [
+      {
+        id: "4",
+        name: "バスケットユニフォーム",
+        price: "¥1,300〜",
+        image: "https://ext.same-assets.com/1649376393/467570851.png",
+        sizes: "S-XL",
+        colors: 10,
+        isNew: true,
+      },
+    ],
+  },
+  templates: {
+    label: "🎨 デザインテンプレート",
+    products: [
+      {
+        id: "5",
+        name: "クラTテンプレート 1",
+        price: "¥1,300〜",
+        image: "/templates/10.png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
+      },
+      {
+        id: "6",
+        name: "クラTテンプレート 2",
+        price: "¥1,300〜",
+        image: "/templates/13.png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
       },
       {
         id: "7",
-        name: "ジップパーカー",
-        price: "¥1,800〜",
-        image: "https://ext.same-assets.com/1649376393/212328064.png",
-        sizes: "S-XL",
-        colors: 8,
+        name: "クラTテンプレート 3",
+        price: "¥1,300〜",
+        image: "/templates/16.png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
       },
-    ],
-  },
-  uniform: {
-    label: "ユニフォーム",
-    products: [
       {
         id: "8",
-        name: "サッカーユニフォーム",
-        price: "¥2,000〜",
-        image: "https://ext.same-assets.com/1649376393/2094887123.png",
-        sizes: "S-XL",
-        isSale: true,
+        name: "クラTテンプレート 4",
+        price: "¥1,300〜",
+        image: "/templates/17.png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
       },
       {
         id: "9",
-        name: "ベースボールシャツ",
-        price: "¥1,800〜",
-        image: "https://ext.same-assets.com/1649376393/467570851.png",
-        sizes: "S-XL",
+        name: "クラTテンプレート 5",
+        price: "¥1,300〜",
+        image: "/templates/18.png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
       },
-    ],
-  },
-  goods: {
-    label: "グッズ等",
-    products: [
       {
         id: "10",
-        name: "トートバッグ",
-        price: "¥500〜",
-        image: "https://ext.same-assets.com/1649376393/1530691411.png",
+        name: "クラTテンプレート 6",
+        price: "¥1,300〜",
+        image: "/templates/Image from Shuto Nii via Slack.png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
       },
       {
         id: "11",
-        name: "キャップ",
-        price: "¥800〜",
-        image: "https://ext.same-assets.com/1649376393/646837938.png",
+        name: "クラTテンプレート 7",
+        price: "¥1,300〜",
+        image: "/templates/Image from Shuto Nii via Slack (1).png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
+      },
+      {
+        id: "12",
+        name: "クラTテンプレート 8",
+        price: "¥1,300〜",
+        image: "/templates/Image from Shuto Nii via Slack (2).png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
+      },
+      {
+        id: "13",
+        name: "クラTテンプレート 9",
+        price: "¥1,300〜",
+        image: "/templates/Image from Shuto Nii via Slack (3).png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
+      },
+      {
+        id: "14",
+        name: "クラTテンプレート 10",
+        price: "¥1,300〜",
+        image: "/templates/Image from Shuto Nii via Slack (4).png",
+        sizes: "XS-5XL",
+        colors: 0,
+        isTemplate: true,
       },
     ],
   },
@@ -131,9 +172,9 @@ export const ProductTabs: React.FC = () => {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-2">商品紹介</h2>
-        <p className="text-center text-gray-600 mb-8">豊富なラインナップから選べる！</p>
+      <div className="px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-2">商品ラインナップ</h2>
+        <p className="text-center text-gray-600 mb-8 text-sm sm:text-base">クラT・ユニフォーム・デザインテンプレートから選択</p>
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -141,9 +182,9 @@ export const ProductTabs: React.FC = () => {
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`px-6 py-3 rounded-full font-bold transition ${
+              className={`px-4 py-3 rounded-full font-bold transition text-sm ${
                 activeTab === key
-                  ? "bg-sparkle-pink text-white"
+                  ? "bg-sparkle-pink text-white shadow-lg"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -153,7 +194,7 @@ export const ProductTabs: React.FC = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className={`grid gap-6 ${activeTab === 'templates' ? 'grid-cols-2 max-w-4xl' : 'grid-cols-1 max-w-md'} mx-auto`}>
           {productCategories[activeTab as keyof typeof productCategories].products.map(
             (product) => (
               <div
@@ -178,7 +219,12 @@ export const ProductTabs: React.FC = () => {
                       SALE
                     </span>
                   )}
-                  {product.colors && (
+                  {product.isTemplate && (
+                    <span className="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                      テンプレート
+                    </span>
+                  )}
+                  {product.colors && product.colors > 0 && (
                     <div className="absolute bottom-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-bold shadow z-10">
                       {product.colors}色
                     </div>

@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, Menu, X, Phone, Mail, ArrowRight } from "luc
 import { WavePatternTop, WavePatternBottom } from "@/components/WavePattern";
 import { ProductTabs } from "@/components/ProductTabs";
 import { PriceCalculator } from "@/components/PriceCalculator";
-import { DesignGallery } from "@/components/DesignGallery";
+
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Home() {
   const slides = [
     {
       image: "https://ext.same-assets.com/1649376393/3469806900.png",
-      title: "クラスTシャツ\nポロシャツ\nユニフォーム\nもお任せ！",
+      title: "クラスTシャツ\nポロシャツ\nユニフォーム\n人気デザイン\nもお任せ！",
       subtitle: "サイズが合わなくても大丈夫\n安心の「サイズ交換保証」付き\n【先生分無料！】",
     },
     {
@@ -32,9 +32,8 @@ export default function Home() {
   ];
 
   const products = [
-    { name: "ドライTシャツ", price: "¥400〜", image: "https://ext.same-assets.com/1649376393/3361116398.png", sizes: "XS-5XL" },
-    { name: "スタンダードTシャツ", price: "¥520〜", image: "https://ext.same-assets.com/1649376393/2847859190.png", sizes: "100-5XL", kids: true },
-    { name: "ラグランTシャツ", price: "¥700〜", image: "https://ext.same-assets.com/1649376393/2117706410.png", sizes: "S-XL" },
+    { name: "ドライTシャツ", price: "¥980〜", image: "https://ext.same-assets.com/1649376393/3361116398.png", sizes: "XS-5XL" },
+    { name: "ポロシャツ", price: "¥1,180〜", image: "https://ext.same-assets.com/1649376393/2847859190.png", sizes: "XS-5XL" },
   ];
 
   const printMethods = [
@@ -69,7 +68,9 @@ export default function Home() {
   }, [slides.length]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-100">
+      {/* Mobile-First Container */}
+      <div className="max-w-[430px] mx-auto bg-white shadow-xl min-h-screen relative">
       {/* Header - Mobile First */}
       <header className="sticky top-0 z-50 bg-white shadow-md">
         {/* Top Bar - Mobile Optimized */}
@@ -230,11 +231,11 @@ export default function Home() {
                     <div className="space-y-3">
                       <Link
                         href="https://line.me/R/ti/p/@895gydcc"
-                        className="block w-full bg-green-500 text-white py-4 rounded-full font-bold text-lg hover:bg-green-600 transition animate-slideIn animation-delay-400"
+                        className="block w-full bg-green-500 text-white py-5 px-6 rounded-full font-bold text-xl hover:bg-green-600 transition animate-slideIn animation-delay-400 shadow-lg hover:shadow-xl"
                       >
                         🎯 LINEで無料相談
                       </Link>
-                      <button className="block w-full bg-sparkle-yellow text-gray-800 py-4 rounded-full font-bold text-lg hover:bg-sparkle-yellow-light transition animate-slideIn animation-delay-500">
+                      <button className="block w-full bg-sparkle-yellow text-gray-800 py-5 px-6 rounded-full font-bold text-xl hover:bg-sparkle-yellow-light transition animate-slideIn animation-delay-500 shadow-lg hover:shadow-xl">
                         💰 料金を見る
                       </button>
                     </div>
@@ -276,9 +277,9 @@ export default function Home() {
       {/* Special Offer Banner */}
       <section className="relative bg-gradient-to-r from-sparkle-pink to-sparkle-pink-light py-8">
         <WavePatternBottom color="#ffffff" opacity={0.2} />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="px-4 relative z-10">
           <div className="text-center text-white">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 leading-tight">オリジナルプリントの専門店</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 leading-tight">クラT・ユニフォーム専門店</h2>
             <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-8 mb-4">
               <div className="bg-white/20 backdrop-blur rounded-full px-6 py-3">
                 <span className="font-bold text-lg">デザイン＆見積無料</span>
@@ -296,9 +297,9 @@ export default function Home() {
 
       {/* LINE CTA */}
       <section className="bg-gradient-to-r from-green-500 to-green-600 py-12">
-        <div className="container mx-auto px-4">
-          <div className="bg-white rounded-3xl p-8 max-w-4xl mx-auto shadow-xl">
-            <div className="flex flex-col lg:flex-row items-center gap-8">
+        <div className="px-4">
+          <div className="bg-white rounded-3xl p-6 shadow-xl">
+            <div className="flex flex-col items-center gap-6">
               <div className="flex-1">
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 leading-tight">
                   <span className="text-sparkle-pink">サイズ交換保証</span>で安心！<br className="sm:hidden" />
@@ -338,12 +339,12 @@ export default function Home() {
 
       {/* Order Flow */}
       <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12 leading-tight">
             今日注文して、<br className="sm:hidden" />
             <span className="text-sparkle-pink">最短明日お届け！</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 gap-8 mb-12">
             <div className="text-center">
               <div className="bg-sparkle-turquoise text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
                 01
@@ -381,96 +382,215 @@ export default function Home() {
       {/* Products Section with Tabs */}
       <ProductTabs />
 
-      {/* Price Calculator */}
-      <PriceCalculator />
-
-      {/* Design Gallery */}
-      <DesignGallery />
-
-      {/* Uniform Templates Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center mb-6 leading-tight px-4">
-            デザインに悩んだらコレ！<br />
-            選べるユニフォームテンプレートは<br className="sm:hidden" />全16種！
+      {/* Special Zones Section */}
+      <section className="py-16 bg-gradient-to-br from-sparkle-turquoise/10 to-sparkle-pink/10">
+        <div className="px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+            特別ゾーン
           </h2>
-          <p className="text-center text-gray-600 mb-12 px-4 text-sm sm:text-base leading-relaxed">
-            「どんなデザインにしようか決まらない…」<br />
-            そんな時もご安心ください！<br />
-            プロがデザインした高品質な<br className="sm:hidden" />ユニフォーム風テンプレートを<br />
-            16種類ご用意しました。
-          </p>
-
-          <div className="bg-sparkle-turquoise/10 rounded-2xl p-6 mx-4 mb-12">
-            <p className="text-center font-bold mb-4 text-sm sm:text-base leading-relaxed">
-              お好きなテンプレートを選ぶだけで、<br />
-              <span className="text-sparkle-turquoise text-xl sm:text-2xl">【前面プリント代込み1,300円】</span><br />
-              で本格的なオリジナルTシャツが<br className="sm:hidden" />簡単に作成できます。
-            </p>
-            <p className="text-center text-gray-600 text-sm sm:text-base leading-relaxed">
-              クラス名や個人名、背番号などを追加して、<br />
-              世界に一つだけのユニフォームを<br className="sm:hidden" />完成させましょう！
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {[...Array(16)].map((_, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:scale-105 cursor-pointer">
-                <div className="aspect-square bg-gradient-to-br from-sparkle-turquoise to-sparkle-turquoise-light rounded-t-xl flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="text-4xl font-bold mb-2">#{i + 1}</div>
-                    <div className="text-sm">テンプレート</div>
-                  </div>
-                </div>
-                <div className="p-3 text-center">
-                  <p className="text-sm font-bold">デザイン {i + 1}</p>
+          
+          <div className="space-y-6">
+            {/* サッカーユニゾーン */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="text-4xl">⚽</div>
+                <div>
+                  <h3 className="text-xl font-bold text-green-600">サッカーユニゾーン</h3>
+                  <p className="text-sm text-gray-600">本格的なサッカーユニフォーム</p>
                 </div>
               </div>
-            ))}
+              <p className="text-sm text-gray-700 mb-4">
+                プロ仕様のデザインテンプレートで、チーム名・背番号・個人名を自由に配置。
+                前面プリント込み1,300円〜
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">チーム名対応</span>
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">背番号自由</span>
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">個人名OK</span>
+              </div>
+            </div>
+
+            {/* バスケユニゾーン */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="text-4xl">🏀</div>
+                <div>
+                  <h3 className="text-xl font-bold text-orange-600">バスケユニゾーン</h3>
+                  <p className="text-sm text-gray-600">迫力のバスケットユニフォーム</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-700 mb-4">
+                バスケ部御用達のクールなデザイン。タンクトップタイプで動きやすさ抜群。
+                前面プリント込み1,300円〜
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">タンクトップ</span>
+                <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">動きやすい</span>
+                <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">クールデザイン</span>
+              </div>
+            </div>
+
+            {/* クラT人気デザインゾーン */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="text-4xl">🔥</div>
+                <div>
+                  <h3 className="text-xl font-bold text-red-600">クラT人気デザインゾーン</h3>
+                  <p className="text-sm text-gray-600">みんなが選ぶ定番デザイン</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-700 mb-4">
+                過去の実績から選ばれた人気No.1デザイン集。迷ったらコレ！
+                テンプレート使用で前面プリント込み1,300円〜
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs">人気No.1</span>
+                <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs">実績豊富</span>
+                <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs">テンプレート</span>
+              </div>
+            </div>
           </div>
 
-          <div className="text-center">
-            <button className="bg-sparkle-turquoise text-white px-8 py-3 rounded-full font-bold hover:bg-sparkle-turquoise-dark transition">
-              全テンプレートを見る
+          <div className="text-center mt-8">
+            <button className="bg-sparkle-pink text-white px-8 py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition">
+              全ゾーンを詳しく見る
             </button>
           </div>
         </div>
       </section>
 
-      {/* Let's Get Started Section */}
-      <section className="relative py-16 bg-sparkle-turquoise-light">
-        <WavePatternTop color="#FF5A9D" opacity={0.1} />
-        <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">
-            Let's get Started!
-          </h2>
-          <p className="text-center text-gray-700 mb-8 text-base sm:text-lg">
-            はじめての方へ
-          </p>
 
-          <div className="text-center mb-8">
-            <p className="text-base sm:text-lg mb-4">ご安心ください！</p>
-            <p className="text-sm sm:text-base mb-8 leading-relaxed px-4">
-              スパークルなら「安心」「楽しい」<br className="sm:hidden" />
-              クラT作りをお約束します！
-            </p>
+
+
+
+
+      {/* Let's Get Started Section */}
+      <section className="relative py-16 bg-gradient-to-br from-sparkle-turquoise-light to-sparkle-pink/10">
+        <WavePatternTop color="#FF5A9D" opacity={0.1} />
+        <div className="px-4 relative z-10">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-4 shadow-lg">
+              <span className="text-2xl">🎉</span>
+              <h2 className="text-xl sm:text-2xl font-bold text-sparkle-pink">
+                初めての方へ
+              </h2>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">
+              Let's get Started!
+            </h3>
+            
+            {/* 安心メッセージ */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg max-w-md mx-auto">
+              <div className="text-3xl mb-3">✨</div>
+              <p className="text-xl font-bold text-sparkle-pink mb-3">ご安心ください！</p>
+              <p className="text-base text-gray-700 leading-relaxed">
+                スパークルなら<br className="sm:hidden" />
+                <span className="font-bold text-green-600">「安心」</span>・<span className="font-bold text-blue-600">「楽しい」</span><br className="sm:hidden" />
+                クラT作りをお約束します！
+              </p>
+              <div className="flex justify-center gap-2 mt-4">
+                <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">サイズ交換保証</span>
+                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">先生分無料</span>
+                <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">LINE完結</span>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-6 text-center">
-              <div className="text-5xl mb-4">👕</div>
-              <h3 className="text-xl font-bold mb-2">商品を決めよう！</h3>
-              <p className="text-gray-600">大人気のドライTシャツから ユニフォーム風商品まで スウェットパーカーなど豊富なラインナップ！</p>
+          {/* 簡単3ステップ */}
+          <div className="max-w-4xl mx-auto">
+            <h4 className="text-xl font-bold text-center mb-8 text-gray-800">
+              簡単3ステップで完成！
+            </h4>
+            
+            <div className="space-y-6">
+              {/* ステップ1 */}
+              <div className="relative">
+                <div className="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-sparkle-pink to-sparkle-pink-light rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      1
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-3xl">👕</span>
+                      <h3 className="text-lg font-bold text-gray-800">商品を決めよう！</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      大人気の<span className="font-semibold text-sparkle-pink">ドライTシャツ</span>から<span className="font-semibold text-sparkle-turquoise">ユニフォーム風商品</span>まで<br className="sm:hidden" />
+                      豊富なラインナップからお選びください！
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <span className="bg-pink-50 text-pink-700 px-2 py-1 rounded text-xs">Tシャツ</span>
+                      <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">ポロシャツ</span>
+                      <span className="bg-green-50 text-green-700 px-2 py-1 rounded text-xs">ユニフォーム</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ステップ2 */}
+              <div className="relative">
+                <div className="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-sparkle-turquoise to-sparkle-turquoise-light rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      2
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-3xl">🎨</span>
+                      <h3 className="text-lg font-bold text-gray-800">デザインを決めよう！</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      <span className="font-semibold text-sparkle-turquoise">800種類以上</span>のテンプレートから選択OK！<br className="sm:hidden" />
+                      もちろん<span className="font-semibold text-sparkle-pink">オリジナルデザイン</span>も大歓迎です
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <span className="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs">テンプレート豊富</span>
+                      <span className="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs">オリジナルOK</span>
+                      <span className="bg-red-50 text-red-700 px-2 py-1 rounded text-xs">人気デザイン</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ステップ3 */}
+              <div className="relative">
+                <div className="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      3
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-3xl">🎯</span>
+                      <h3 className="text-lg font-bold text-gray-800">加工方法を決めよう！</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      <span className="font-semibold text-green-600">シルクプリント</span>・<span className="font-semibold text-blue-600">刺繍</span>から<br className="sm:hidden" />
+                      フルカラーイラストまで様々な加工に対応
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <span className="bg-green-50 text-green-700 px-2 py-1 rounded text-xs">シルクプリント</span>
+                      <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">刺繍</span>
+                      <span className="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs">フルカラー</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white rounded-2xl p-6 text-center">
-              <div className="text-5xl mb-4">🎨</div>
-              <h3 className="text-xl font-bold mb-2">デザインを決めよう！</h3>
-              <p className="text-gray-600">創刊号のデザインテンプレート 800種類以上！ もちろんオリジナルデザインも大歓迎</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 text-center">
-              <div className="text-5xl mb-4">🎯</div>
-              <h3 className="text-xl font-bold mb-2">加工方法を決めよう！</h3>
-              <p className="text-gray-600">シルクプリント・刺繍 写真やフルカラーのイラストまで 様々なプリント一人ひとり異なるチームナンバー</p>
+
+            {/* CTA */}
+            <div className="text-center mt-10">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg max-w-sm mx-auto">
+                <p className="text-sm text-gray-600 mb-4">まずは気軽にご相談ください</p>
+                <button className="w-full bg-gradient-to-r from-sparkle-pink to-sparkle-pink-light text-white px-6 py-3 rounded-full font-bold hover:shadow-lg transition-all">
+                  💬 LINEで無料相談する
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -478,12 +598,12 @@ export default function Home() {
 
       {/* Print Methods */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">
             ご注文方法のご案内
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             {printMethods.map((method, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition">
                 <div className={`${method.color} p-8 text-center text-white`}>
@@ -500,41 +620,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="relative py-16 bg-sparkle-turquoise-light">
-        <WavePatternBottom color="#FF5A9D" opacity={0.1} />
-        <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
-            制作事例
-          </h2>
-          <p className="text-center text-gray-600 mb-8 text-sm sm:text-base leading-relaxed px-4">
-            実際に作成された素敵な作品たち。<br className="sm:hidden" />
-            制作のヒントも見つけよう！
-          </p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-br from-sparkle-pink to-sparkle-turquoise opacity-75"></div>
-                <div className="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">
-                  {i}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <button className="bg-sparkle-pink text-white px-8 py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition">
-              一覧を見る
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Price Calculator */}
+      <PriceCalculator />
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="px-4">
+          <div className="grid grid-cols-1 gap-8 mb-8">
             <div>
               <h3 className="text-xl font-bold mb-4">ご注文について</h3>
               <ul className="space-y-2">
@@ -597,8 +689,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
-
+      </div>
     </div>
   );
 }
