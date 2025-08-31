@@ -235,7 +235,7 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center gap-8">
               <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-4">
-                  全国高等学校の<span className="text-sparkle-pink">約半数</span>2校のうち1校が注文！
+                  <span className="text-sparkle-pink">サイズ交換保証</span>で安心！ぴったりのクラスTシャツをお届け
                 </h3>
                 <p className="text-xl font-bold text-green-600 mb-6">
                   どんな事でもOK！スタッフに聞いてみよう
