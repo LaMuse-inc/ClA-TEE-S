@@ -70,82 +70,140 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
+      {/* Header - Mobile First */}
       <header className="sticky top-0 z-50 bg-white shadow-md">
-        {/* Top Bar */}
+        {/* Top Bar - Mobile Optimized */}
         <div className="bg-sparkle-pink text-white py-2">
-          <div className="container mx-auto px-4 flex justify-between items-center text-sm">
-            <div className="flex items-center gap-4">
-              <span className="font-bold">🎉 LINEで簡単注文</span>
-              <span>学生の味方！オリジナルTシャツ専門店</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/guide" className="hover:underline">ご利用ガイド</Link>
-              <Link href="/about" className="hover:underline">私たちについて</Link>
-              <Link href="/faq" className="hover:underline">よくある質問</Link>
-            </div>
+          <div className="px-4 text-center">
+            <span className="text-sm font-bold">🎉 LINEで簡単注文 | 学生の味方！</span>
           </div>
         </div>
 
-        {/* Main Navigation */}
+        {/* Main Navigation - Mobile First */}
         <nav className="bg-white">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between py-4">
+          <div className="px-4">
+            <div className="flex items-center justify-between py-3">
               {/* Logo */}
               <Link href="/" className="flex items-center">
                 <Image
                   src="/logo.png"
                   alt="SPARKLE"
-                  width={150}
-                  height={60}
-                  className="h-12 w-auto"
+                  width={120}
+                  height={48}
+                  className="h-10 w-auto"
                 />
               </Link>
 
-              {/* Desktop Navigation */}
-              <div className="hidden lg:flex items-center gap-8">
-                <Link href="/guide" className="text-gray-700 hover:text-sparkle-pink transition">ご利用ガイド</Link>
-                <Link href="/products" className="text-gray-700 hover:text-sparkle-pink transition">商品カタログ</Link>
-                <Link href="/design" className="text-gray-700 hover:text-sparkle-pink transition">デザイン作成</Link>
-                <Link href="/faq" className="text-gray-700 hover:text-sparkle-pink transition">よくある質問</Link>
-              </div>
+              {/* Mobile CTA & Menu */}
+              <div className="flex items-center gap-2">
+                {/* Primary CTA Button */}
+                <Link
+                  href="https://line.me/R/ti/p/@895gydcc"
+                  className="bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-green-600 transition flex items-center gap-1"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.84 5.42-1.19 7.18-.15.76-.45 1.02-.75 1.04-.64.04-1.13-.42-1.75-.83-.97-.64-1.52-1.03-2.47-1.66-1.09-.71-.38-1.1.24-1.74.16-.16 2.92-2.68 2.98-2.91.01-.03.01-.14-.07-.2-.08-.06-.2-.04-.28-.02-.12.02-2.03 1.29-5.73 3.78-.54.37-1.03.56-1.47.55-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.46-.51 1.28-.78 5.01-2.18 8.35-3.63 10.02-4.35 1.43-.61 1.72-.72 1.91-.72.04 0 .14 0 .2.07.05.05.06.14.06.18-.01.06-.01.24-.02.38z"/>
+                  </svg>
+                  LINE相談
+                </Link>
 
-              {/* CTA Buttons */}
-              <div className="flex items-center gap-4">
-                <button className="bg-sparkle-yellow text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-sparkle-yellow-light transition">
-                  無料見積もり
-                </button>
-                <button className="bg-sparkle-turquoise text-white px-6 py-3 rounded-full font-bold hover:bg-sparkle-turquoise-dark transition">
-                  お問い合わせ
+                {/* Menu Toggle */}
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="p-2 rounded-lg hover:bg-gray-100"
+                >
+                  {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
               </div>
-
-              {/* Mobile Menu Toggle */}
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-2"
-              >
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
             </div>
           </div>
         </nav>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Full Screen Overlay */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t">
-            <div className="container mx-auto px-4 py-4">
-              <Link href="#" className="block py-2 text-gray-700">ご注文ガイド</Link>
-              <Link href="#" className="block py-2 text-gray-700">商品を選ぶ</Link>
-              <Link href="#" className="block py-2 text-gray-700">加工方法を選ぶ</Link>
-              <Link href="#" className="block py-2 text-gray-700">デザインについて</Link>
+          <div className="fixed inset-0 bg-white z-50 flex flex-col">
+            {/* Header in Menu */}
+            <div className="flex items-center justify-between p-4 border-b">
+              <Image
+                src="/logo.png"
+                alt="SPARKLE"
+                width={120}
+                height={48}
+                className="h-10 w-auto"
+              />
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-gray-100"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Menu Items */}
+            <div className="flex-1 p-6">
+              <div className="space-y-6">
+                {/* Primary Actions */}
+                <div className="space-y-4">
+                  <Link
+                    href="https://line.me/R/ti/p/@895gydcc"
+                    className="block w-full bg-green-500 text-white text-center py-4 rounded-full font-bold text-lg hover:bg-green-600 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    🎯 LINEで相談・見積もり
+                  </Link>
+                  <button 
+                    className="block w-full bg-sparkle-yellow text-gray-800 text-center py-4 rounded-full font-bold text-lg hover:bg-sparkle-yellow-light transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    💰 料金シミュレーター
+                  </button>
+                </div>
+
+                {/* Menu Links */}
+                <div className="space-y-4 pt-6 border-t">
+                  <Link 
+                    href="/guide" 
+                    className="block text-lg font-medium text-gray-700 py-3 hover:text-sparkle-pink transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    📋 ご利用ガイド
+                  </Link>
+                  <Link 
+                    href="/products" 
+                    className="block text-lg font-medium text-gray-700 py-3 hover:text-sparkle-pink transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    👕 商品カタログ
+                  </Link>
+                  <Link 
+                    href="/design" 
+                    className="block text-lg font-medium text-gray-700 py-3 hover:text-sparkle-pink transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    🎨 デザイン作成
+                  </Link>
+                  <Link 
+                    href="/faq" 
+                    className="block text-lg font-medium text-gray-700 py-3 hover:text-sparkle-pink transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    ❓ よくある質問
+                  </Link>
+                </div>
+
+                {/* Contact Info */}
+                <div className="pt-6 border-t text-center text-sm text-gray-500">
+                  <p>📞 070-9362-9828（24時間受付）</p>
+                  <p>📧 info@s-parkle.co.jp</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
       </header>
 
-      {/* Hero Carousel */}
-      <section className="relative h-[500px] lg:h-[600px] overflow-hidden">
+      {/* Hero Carousel - Mobile Optimized */}
+      <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="relative h-full">
           {slides.map((slide, index) => (
             <div
@@ -160,18 +218,26 @@ export default function Home() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent">
-                <div className="container mx-auto px-4 h-full flex items-center">
-                  <div className="text-white max-w-2xl">
-                    <h1 className="text-4xl lg:text-6xl font-bold mb-4 animate-slideIn">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+                <div className="px-4 h-full flex items-center justify-center">
+                  <div className="text-white text-center max-w-md">
+                    <h1 className="text-2xl sm:text-3xl font-bold mb-4 animate-slideIn leading-tight">
                       {slide.title}
                     </h1>
-                    <p className="text-xl lg:text-2xl mb-8 animate-slideIn animation-delay-200">
+                    <p className="text-base sm:text-lg mb-8 animate-slideIn animation-delay-200 leading-relaxed">
                       {slide.subtitle}
                     </p>
-                    <button className="bg-sparkle-yellow text-gray-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-sparkle-yellow-light transition animate-slideIn animation-delay-400">
-                      今すぐ見積もり
-                    </button>
+                    <div className="space-y-3">
+                      <Link
+                        href="https://line.me/R/ti/p/@895gydcc"
+                        className="block w-full bg-green-500 text-white py-4 rounded-full font-bold text-lg hover:bg-green-600 transition animate-slideIn animation-delay-400"
+                      >
+                        🎯 LINEで無料相談
+                      </Link>
+                      <button className="block w-full bg-sparkle-yellow text-gray-800 py-4 rounded-full font-bold text-lg hover:bg-sparkle-yellow-light transition animate-slideIn animation-delay-500">
+                        💰 料金を見る
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -179,28 +245,28 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Carousel Controls */}
+        {/* Carousel Controls - Mobile Optimized */}
         <button
           onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white transition"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-3 hover:bg-white transition shadow-lg"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white transition"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-3 hover:bg-white transition shadow-lg"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Carousel Indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {/* Carousel Indicators - Mobile Optimized */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 rounded-full transition ${
-                index === currentSlide ? "bg-white" : "bg-white/50"
+                index === currentSlide ? "bg-white shadow-lg" : "bg-white/60"
               }`}
             />
           ))}
