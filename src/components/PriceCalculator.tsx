@@ -60,35 +60,35 @@ export const PriceCalculator: React.FC = () => {
           <div className="flex flex-col md:flex-row gap-4 mb-8">
             <button
               onClick={() => setSelectedPlan("custom")}
-              className={`flex-1 p-6 rounded-2xl border-2 transition-all ${
+              className={`flex-1 p-4 rounded-xl border-2 transition-all ${
                 selectedPlan === "custom"
                   ? "border-sparkle-pink bg-white shadow-lg"
                   : "border-gray-200 bg-gray-50 hover:bg-white"
               }`}
             >
-              <div className="flex items-center justify-center mb-3">
-                <Shirt className="w-8 h-8 mr-2 text-sparkle-pink" />
-                <h3 className="text-xl font-bold">プラン①：クラT・ポロシャツ</h3>
+              <div className="flex items-center justify-center mb-2">
+                <Shirt className="w-6 h-6 mr-2 text-sparkle-pink" />
+                <h3 className="text-lg font-bold">クラT・ポロシャツ</h3>
               </div>
-              <p className="text-sm text-gray-600">
-                自由なデザインで作る！Tシャツやポロシャツをベースに、オリジナルデザインをプリント
+              <p className="text-xs text-gray-600">
+                オリジナルデザインをプリント
               </p>
             </button>
             
             <button
               onClick={() => setSelectedPlan("uniform")}
-              className={`flex-1 p-6 rounded-2xl border-2 transition-all ${
+              className={`flex-1 p-4 rounded-xl border-2 transition-all ${
                 selectedPlan === "uniform"
                   ? "border-sparkle-turquoise bg-white shadow-lg"
                   : "border-gray-200 bg-gray-50 hover:bg-white"
               }`}
             >
-              <div className="flex items-center justify-center mb-3">
-                <Trophy className="w-8 h-8 mr-2 text-sparkle-turquoise" />
-                <h3 className="text-xl font-bold">プラン②：ユニフォーム風カスタム</h3>
+              <div className="flex items-center justify-center mb-2">
+                <Trophy className="w-6 h-6 mr-2 text-sparkle-turquoise" />
+                <h3 className="text-lg font-bold">ユニフォーム風カスタム</h3>
               </div>
-              <p className="text-sm text-gray-600">
-                選ぶだけで簡単！16種類のテンプレートから選ぶだけで本格的なユニフォームが完成
+              <p className="text-xs text-gray-600">
+                16種類のテンプレートから選択
               </p>
             </button>
           </div>
