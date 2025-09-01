@@ -69,3 +69,43 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hero Swiper navigation - pop and circular */
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px; /* full rounded */
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border: 3px solid #FF6B6B; /* pop color */
+  color: #FF6B6B;
+}
+
+/* center the icons inside */
+.hero-swiper .swiper-button-next::after,
+.hero-swiper .swiper-button-prev::after {
+  font-size: 16px; /* smaller icon inside circle */
+  font-weight: 900;
+}
+
+/* position adjustment for mobile */
+.hero-swiper .swiper-button-next { right: 12px; }
+.hero-swiper .swiper-button-prev { left: 12px; }
+
+/* hover effect */
+.hero-swiper .swiper-button-next:hover,
+.hero-swiper .swiper-button-prev:hover {
+  background: #FF6B6B;
+  color: #ffffff;
+  border-color: #ff8f8f;
+}
+
+/* pagination bullets to match pop style */
+.hero-swiper .swiper-pagination-bullet {
+  background: #ff8f8f;
+  opacity: 1;
+}
+.hero-swiper .swiper-pagination-bullet-active {
+  background: #FF6B6B;
+}

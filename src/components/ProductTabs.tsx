@@ -2,6 +2,11 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 interface Product {
   id: string;
@@ -40,12 +45,46 @@ const productCategories: Record<string, { label: string; products: Product[] }> 
         sizes: "XS-5XL",
         colors: 15,
       },
+      {
+        id: "2-1",
+        name: "ドライポロシャツ",
+        price: "¥1,280〜",
+        image: "https://ext.same-assets.com/1649376393/433771961.png",
+        sizes: "XS-5XL",
+        colors: 12,
+      },
+      {
+        id: "2-2",
+        name: "スポーツポロシャツ",
+        price: "¥1,380〜",
+        image: "https://ext.same-assets.com/1649376393/433771961.png",
+        sizes: "XS-5XL",
+        colors: 10,
+      },
     ],
   },
   soccer: {
     label: "⚽ サッカーユニ",
     products: [
       {
+        id: "3",
+        name: "サッカーユニフォーム",
+        price: "¥1,300〜",
+        image: "https://ext.same-assets.com/1649376393/2094887123.png",
+        sizes: "S-XL",
+        colors: 12,
+        isNew: true,
+      },
+       {
+        id: "3",
+        name: "サッカーユニフォーム",
+        price: "¥1,300〜",
+        image: "https://ext.same-assets.com/1649376393/2094887123.png",
+        sizes: "S-XL",
+        colors: 12,
+        isNew: true,
+      },
+       {
         id: "3",
         name: "サッカーユニフォーム",
         price: "¥1,300〜",
@@ -167,6 +206,7 @@ const productCategories: Record<string, { label: string; products: Product[] }> 
   },
 };
 
+
 export const ProductTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState("tshirts");
 
@@ -194,58 +234,128 @@ export const ProductTabs: React.FC = () => {
         </div>
 
         {/* Products Grid */}
-        <div className={`grid gap-6 ${activeTab === 'templates' ? 'grid-cols-2 max-w-4xl' : 'grid-cols-1 max-w-md'} mx-auto`}>
-          {productCategories[activeTab as keyof typeof productCategories].products.map(
-            (product) => (
-              <div
-                key={product.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition group"
-              >
-                <div className="relative h-64 bg-gray-50 overflow-hidden">
-                  <Image
-                    src={product.image || "/api/placeholder/400/400"}
-                    alt={product.name}
-                    fill
-                    className="object-contain hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  {product.isNew && (
-                    <span className="absolute top-4 left-4 bg-sparkle-pink text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                      NEW
-                    </span>
-                  )}
-                  {product.isSale && (
-                    <span className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                      SALE
-                    </span>
-                  )}
-                  {product.isTemplate && (
-                    <span className="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                      テンプレート
-                    </span>
-                  )}
-                  {product.colors && product.colors > 0 && (
-                    <div className="absolute bottom-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-bold shadow z-10">
-                      {product.colors}色
+        <div className="mx-auto max-w-4xl">
+          {activeTab === 'templates' ? (
+            <Swiper
+              modules={[Autoplay, Pagination, Navigation]}
+              spaceBetween={20}
+              slidesPerView={1.5}
+              centeredSlides={false}
+              loop={true}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              pagination={{ clickable: true }}
+              navigation={true}
+              breakpoints={{
+                640: { slidesPerView: 2.5 },
+                768: { slidesPerView: 3 },
+              }}
+            >
+              {productCategories.templates.products.map((product) => (
+                <SwiperSlide key={product.id}>
+                  <div
+                    key={product.id}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition group"
+                  >
+                    <div className="relative h-48 bg-gray-50 overflow-hidden">
+                      <Image
+                        src={product.image || "/api/placeholder/400/400"}
+                        alt={product.name}
+                        fill
+                        className="object-contain hover:scale-110 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      {product.isNew && (
+                        <span className="absolute top-4 left-4 bg-sparkle-pink text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                          NEW
+                        </span>
+                      )}
+                      {product.isSale && (
+                        <span className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                          SALE
+                        </span>
+                      )}
+                      {product.isTemplate && (
+                        <span className="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                          テンプレート
+                        </span>
+                      )}
+                      {product.colors && product.colors > 0 && (
+                        <div className="absolute bottom-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-bold shadow z-10">
+                          {product.colors}色
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                  <p className="text-3xl font-bold text-sparkle-pink mb-2">
-                    {product.price}
-                  </p>
-                  {product.sizes && (
-                    <p className="text-gray-600 text-sm mb-4">
-                      サイズ: {product.sizes}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                      <p className="text-3xl font-bold text-sparkle-pink mb-2">
+                        {product.price}
+                      </p>
+                      {product.sizes && (
+                        <p className="text-gray-600 text-sm mb-4">
+                          サイズ: {product.sizes}
+                        </p>
+                      )}
+                      <button className="w-full bg-sparkle-pink text-white py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition group-hover:scale-105">
+                        詳細を見る
+                      </button>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            <div className="grid gap-6 grid-cols-1 max-w-md mx-auto">
+              {productCategories[activeTab as keyof typeof productCategories].products.map((product) => (
+                <div
+                  key={product.id}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition group"
+                >
+                  <div className="relative h-64 bg-gray-50 overflow-hidden">
+                    <Image
+                      src={product.image || "/api/placeholder/400/400"}
+                      alt={product.name}
+                      fill
+                      className="object-contain hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    {product.isNew && (
+                      <span className="absolute top-4 left-4 bg-sparkle-pink text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                        NEW
+                      </span>
+                    )}
+                    {product.isSale && (
+                      <span className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                        SALE
+                      </span>
+                    )}
+                    {product.isTemplate && (
+                      <span className="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                        テンプレート
+                      </span>
+                    )}
+                    {product.colors && product.colors > 0 && (
+                      <div className="absolute bottom-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-bold shadow z-10">
+                        {product.colors}色
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                    <p className="text-3xl font-bold text-sparkle-pink mb-2">
+                      {product.price}
                     </p>
-                  )}
-                  <button className="w-full bg-sparkle-pink text-white py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition group-hover:scale-105">
-                    詳細を見る
-                  </button>
+                    {product.sizes && (
+                      <p className="text-gray-600 text-sm mb-4">
+                        サイズ: {product.sizes}
+                      </p>
+                    )}
+                    <button className="w-full bg-sparkle-pink text-white py-3 rounded-full font-bold hover:bg-sparkle-pink-dark transition group-hover:scale-105">
+                      詳細を見る
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )
+              ))}
+            </div>
           )}
         </div>
 

@@ -7,29 +7,32 @@ import { ChevronLeft, ChevronRight, Menu, X, Phone, Mail, ArrowRight } from "luc
 import { WavePatternTop, WavePatternBottom } from "@/components/WavePattern";
 import { ProductTabs } from "@/components/ProductTabs";
 import { PriceCalculator } from "@/components/PriceCalculator";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   const slides = [
-    {
-      image: "https://ext.same-assets.com/1649376393/3469806900.png",
-      title: "クラスTシャツ\nポロシャツ\nユニフォーム\n人気デザイン\nもお任せ！",
-      subtitle: "サイズが合わなくても大丈夫\n安心の「サイズ交換保証」付き\n【先生分無料！】",
-    },
-    {
-      image: "https://ext.same-assets.com/1649376393/3657139855.png",
-      title: "LINEで完結！\nカンタン注文",
-      subtitle: "面倒な手続き不要\nチャットで全て完了",
-    },
-    {
-      image: "https://ext.same-assets.com/1649376393/897169503.png",
-      title: "最短翌日\nお届け可能",
-      subtitle: "急ぎの注文も\n安心サポート",
-    },
-  ];
+  {
+    image: "/クラT画像/1.png",
+    title: "最安の値段出せ！\nクラT 980円！",
+    subtitle: "サイズ交換保証で安心！ぴったりのクラスTシャツにお届け",
+  },
+  {
+    image: "/クラT画像/2.png",
+    title: "先生だ ろろろT！",
+    subtitle: "先生の顔面をTシャツに！\n先生をTシャツに！",
+  },
+  {
+    image: "/クラT画像/3.png",
+    title: "オリジナル 部活Tシャツ制作",
+    subtitle: "オリジナル 部活Tシャツ制作",
+  },
+];
 
   const products = [
     { name: "ドライTシャツ", price: "¥980〜", image: "https://ext.same-assets.com/1649376393/3361116398.png", sizes: "XS-5XL" },
@@ -60,13 +63,6 @@ export default function Home() {
     },
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Mobile-First Container */}
@@ -84,34 +80,33 @@ export default function Home() {
         <nav className="bg-white">
           <div className="px-4">
             <div className="flex items-center justify-between py-3">
-              {/* Logo */}
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/logo.png"
-                  alt="SPARKLE"
-                  width={120}
-                  height={48}
-                  className="h-10 w-auto"
-                />
-              </Link>
+              <div className="flex items-center gap-4">
+                {/* Logo */}
+                <Link href="/" className="flex items-center">
+                  <Image
+                    src="/logo.png"
+                    alt="SPARKLE"
+                    width={120}
+                    height={48}
+                    className="h-10 w-auto"
+                  />
+                </Link>
 
-              {/* Mobile CTA & Menu */}
-              <div className="flex items-center gap-2">
                 {/* Primary CTA Button */}
                 <Link
                   href="https://line.me/R/ti/p/@895gydcc"
-                  className="bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-green-600 transition flex items-center gap-1"
+                  className="bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-green-600 transition flex items-center gap-1 whitespace-nowrap shrink-0"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.84 5.42-1.19 7.18-.15.76-.45 1.02-.75 1.04-.64.04-1.13-.42-1.75-.83-.97-.64-1.52-1.03-2.47-1.66-1.09-.71-.38-1.1.24-1.74.16-.16 2.92-2.68 2.98-2.91.01-.03.01-.14-.07-.2-.08-.06-.2-.04-.28-.02-.12.02-2.03 1.29-5.73 3.78-.54.37-1.03.56-1.47.55-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.46-.51 1.28-.78 5.01-2.18 8.35-3.63 10.02-4.35 1.43-.61 1.72-.72 1.91-.72.04 0 .14 0 .2.07.05.05.06.14.06.18-.01.06-.01.24-.02.38z"/>
                   </svg>
-                  LINE相談
+                  LINEで相談
                 </Link>
 
                 {/* Menu Toggle */}
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="p-2 rounded-lg hover:bg-gray-100"
+                  className="p-2 rounded-lg hover:bg-gray-100 shrink-0"
                 >
                   {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
@@ -119,10 +114,9 @@ export default function Home() {
             </div>
           </div>
         </nav>
-
-        {/* Mobile Menu - Full Screen Overlay */}
         {isMenuOpen && (
           <div className="fixed inset-0 bg-white z-50 flex flex-col">
+            {/* Mobile Menu - Full Screen Overlay */}
             {/* Header in Menu */}
             <div className="flex items-center justify-between p-4 border-b">
               <Image
@@ -204,73 +198,39 @@ export default function Home() {
       </header>
 
       {/* Hero Carousel - Mobile Optimized */}
-      <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
-        <div className="relative h-full">
+      <section className="relative h-[42vh] min-h-[340px] max-w-2xl mx-auto px-4 overflow-hidden rounded-b-2xl">
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={10}
+          slidesPerView={1.2}
+          centeredSlides={true}
+          loop={true}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          navigation={true}
+          className="h-full hero-swiper"
+        >
           {slides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? "opacity-100" : "opacity-0"
-              }`}
-            >
+            <SwiperSlide key={index} className="relative">
               <Image
-                src={slide.image}
                 alt={slide.title}
+                src={slide.image}
                 fill
-                className="object-cover"
+                className="object-cover rounded-2xl border-4 border-red-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
-                <div className="px-4 h-full flex items-center justify-center">
-                  <div className="text-white text-center max-w-sm">
-                    <h1 className="text-2xl sm:text-3xl font-bold mb-6 animate-slideIn leading-tight whitespace-pre-line">
-                      {slide.title}
-                    </h1>
-                    <p className="text-sm sm:text-base mb-8 animate-slideIn animation-delay-200 leading-relaxed whitespace-pre-line">
-                      {slide.subtitle}
-                    </p>
-                    <div className="space-y-3">
-                      <Link
-                        href="https://line.me/R/ti/p/@895gydcc"
-                        className="block w-full bg-green-500 text-white py-5 px-6 rounded-full font-bold text-xl hover:bg-green-600 transition animate-slideIn animation-delay-400 shadow-lg hover:shadow-xl"
-                      >
-                        🎯 LINEで無料相談
-                      </Link>
-                      <button className="block w-full bg-sparkle-yellow text-gray-800 py-5 px-6 rounded-full font-bold text-xl hover:bg-sparkle-yellow-light transition animate-slideIn animation-delay-500 shadow-lg hover:shadow-xl">
-                        💰 料金を見る
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
-
-        {/* Carousel Controls - Mobile Optimized */}
-        <button
-          onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-3 hover:bg-white transition shadow-lg"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-3 hover:bg-white transition shadow-lg"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-
-        {/* Carousel Indicators - Mobile Optimized */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition ${
-                index === currentSlide ? "bg-white shadow-lg" : "bg-white/60"
-              }`}
-            />
-          ))}
+        </Swiper>
+        <div className="mt-8 space-y-3 px-4">
+          <Link
+            href="https://line.me/R/ti/p/@895gydcc"
+            className="block w-full bg-green-500 text-white py-5 px-6 rounded-full font-bold text-xl hover:bg-green-600 transition shadow-lg hover:shadow-xl"
+          >
+            🎯 LINEで無料相談
+          </Link>
+          <button className="block w-full bg-sparkle-yellow text-gray-800 py-5 px-6 rounded-full font-bold text-xl hover:bg-sparkle-yellow-light transition shadow-lg hover:shadow-xl">
+            💰 料金を見る
+          </button>
         </div>
       </section>
 
@@ -297,28 +257,30 @@ export default function Home() {
 
       {/* LINE CTA */}
       <section className="bg-gradient-to-r from-green-500 to-green-600 py-12">
-        <div className="px-4">
-          <div className="bg-white rounded-3xl p-6 shadow-xl">
+        <div className="px-4 flex flex-col items-center">
+          <div className="bg-white rounded-3xl p-6 shadow-xl text-center w-full max-w-2xl">
             <div className="flex flex-col items-center gap-6">
-              <div className="flex-1">
+              <div className="flex-1 flex flex-col items-center">
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 leading-tight">
                   <span className="text-sparkle-pink">サイズ交換保証</span>で安心！<br className="sm:hidden" />
                   ぴったりのクラスTシャツをお届け
                 </h3>
                 <p className="text-xl font-bold text-green-600 mb-6">
-                  どんな事でもOK！スタッフに聞いてみよう
+                  どんな事でもOK！<br />スタッフに聞いてみよう
                 </p>
-                <Link
-                  href="https://line.me/R/ti/p/@895gydcc"
-                  className="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition"
-                >
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.84 5.42-1.19 7.18-.15.76-.45 1.02-.75 1.04-.64.04-1.13-.42-1.75-.83-.97-.64-1.52-1.03-2.47-1.66-1.09-.71-.38-1.1.24-1.74.16-.16 2.92-2.68 2.98-2.91.01-.03.01-.14-.07-.2-.08-.06-.2-.04-.28-.02-.12.02-2.03 1.29-5.73 3.78-.54.37-1.03.56-1.47.55-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.46-.51 1.28-.78 5.01-2.18 8.35-3.63 10.02-4.35 1.43-.61 1.72-.72 1.91-.72.04 0 .14 0 .2.07.05.05.06.14.06.18-.01.06-.01.24-.02.38z"/>
-                  </svg>
-                  LINEで質問
-                </Link>
+                <div className="flex justify-center">
+                  <Link
+                    href="https://line.me/R/ti/p/@895gydcc"
+                    className="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition"
+                  >
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.84 5.42-1.19 7.18-.15.76-.45 1.02-.75 1.04-.64.04-1.13-.42-1.75-.83-.97-.64-1.52-1.03-2.47-1.66-1.09-.71-.38-1.1.24-1.74.16-.16 2.92-2.68 2.98-2.91.01-.03.01-.14-.07-.2-.08-.06-.2-.04-.28-.02-.12.02-2.03 1.29-5.73 3.78-.54.37-1.03.56-1.47.55-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.46-.51 1.28-.78 5.01-2.18 8.35-3.63 10.02-4.35 1.43-.61 1.72-.72 1.91-.72.04 0 .14 0 .2.07.05.05.06.14.06.18-.01.06-.01.24-.02.38z"/>
+                    </svg>
+                    LINEで質問
+                  </Link>
+                </div>
               </div>
-              <div className="relative">
+              <div className="flex justify-center">
                 <div className="w-48 h-48 bg-white rounded-xl shadow-lg p-4">
                   <Image
                     src="/line-qr.jpeg"
@@ -330,8 +292,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-gray-500 mt-4 text-center">
-              ※LINEは相談窓口となりますので注文は出来かねます。
+            <p className="text-sm text-gray-500 mt-4">
+              ※LINEは相談窓口となりますので<br />
+              注文は出来かねます。
             </p>
           </div>
         </div>
@@ -341,7 +304,7 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12 leading-tight">
-            今日注文して、<br className="sm:hidden" />
+            今日注文して<br />
             <span className="text-sparkle-pink">最短明日お届け！</span>
           </h2>
           <div className="grid grid-cols-1 gap-8 mb-12">
