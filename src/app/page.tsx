@@ -221,7 +221,17 @@ export default function Home() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="mt-8 space-y-3 px-4">
+        <div className="mt-4 px-4">
+          <Image
+            src="/クラT画像/サイズが合わないPOP.png"
+            alt="サイズが合わない悩みがゼロ！交換保証付"
+            width={1200}
+            height={480}
+            className="w-full h-auto rounded-2xl shadow-lg"
+            priority
+          />
+        </div>
+        <div className="mt-6 space-y-3 px-4">
           <Link
             href="https://line.me/R/ti/p/@895gydcc"
             className="block w-full bg-green-500 text-white py-5 px-6 rounded-full font-bold text-xl hover:bg-green-600 transition shadow-lg hover:shadow-xl"
